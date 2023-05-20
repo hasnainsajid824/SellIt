@@ -28,12 +28,15 @@
     <string name="reset_pass">Reset Password</string>
     <string name="save">Save</string>
     <string name="title_activity_login">Please\nLogin</string>
+    <string name="title_activity_signup">Create\nAccount</string>
     <string name="prompt_email">Enter Email</string>
     <string name="prompt_password">Enter Password</string>
     <string name="action_sign_in">Sign in or register</string>
-    <string name="action_sign_in_short">Sign in</string>
+    <string name="sign_in">Sign in</string>
     <string name="welcome">"Welcome !"</string>
     <string name="invalid_username">Not a valid username</string>
     <string name="invalid_password">Password must be >5 characters</string>
     <string name="login_failed">"Login failed"</string>
+    <string name="name">Name</string>
+    <string name="enter_name">Enter Name</string>
 </resources>
