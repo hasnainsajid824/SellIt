@@ -7,29 +7,26 @@
         android:dataExtractionRules="@xml/data_extraction_rules"
         android:fullBackupContent="@xml/backup_rules"
         android:icon="@mipmap/ic_app_icon_round"
-        android:label="@string/app_name"
         android:supportsRtl="true"
         android:theme="@style/Theme.SellIt"
         tools:targetApi="31">
         <activity
             android:name=".drawer_activity"
+            android:theme="@style/Theme.Design.NoActionBar"
             android:exported="false" />
         <activity
             android:name=".signup_activity"
             android:exported="false" />
         <activity
             android:name=".login_activity"
-            android:exported="false" />
-        <activity
-            android:name=".ui.login.LoginActivity"
-            android:exported="true"
-            android:label="@string/title_activity_login"
-        >
+            android:exported="true" >
             <intent-filter>
             <action android:name="android.intent.action.MAIN" />
 
             <category android:name="android.intent.category.LAUNCHER" />
-        </intent-filter></activity>
+        </intent-filter>
+        </activity>
+
         <activity
             android:name=".MainActivity"
             android:exported="false">

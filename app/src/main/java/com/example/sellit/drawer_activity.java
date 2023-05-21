@@ -14,7 +14,7 @@ import android.view.MenuItem;
 import com.google.android.material.navigation.NavigationView;
 
 public class drawer_activity extends AppCompatActivity implements NavigationView.OnNavigationItemSelectedListener {
-    private DrawerLayout drawer;
+    private androidx.drawerlayout.widget.DrawerLayout drawer;
 //    private static int SPLASH_TIME_OUT = 4000;
 
     @Override
@@ -22,11 +22,13 @@ public class drawer_activity extends AppCompatActivity implements NavigationView
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_drawer);
 
-        Toolbar toolbar = findViewById(R.id.toolbar);
+        androidx.appcompat.widget.Toolbar toolbar = (androidx.appcompat.widget.Toolbar) findViewById(R.id.toolbar);
         setSupportActionBar(toolbar);
 
-        drawer = findViewById(R.id.drawer_layout);
-        NavigationView navigationView = findViewById(R.id.nav_view);
+        drawer = (androidx.drawerlayout.widget.DrawerLayout) findViewById(R.id.drawer_layout);
+
+        com.google.android.material.navigation.NavigationView navigationView = (com.google.android.material.navigation.NavigationView)
+                findViewById(R.id.nav_view);
         navigationView.setNavigationItemSelectedListener(this);
 
         ActionBarDrawerToggle toggle = new ActionBarDrawerToggle(this, drawer, toolbar,
