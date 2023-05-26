@@ -45,27 +45,9 @@
         app:layout_constraintTop_toBottomOf="@+id/imageView1"
         app:layout_constraintVertical_bias="0.0">
 
-        <TextView
-            android:id="@+id/textView7"
-            android:layout_width="match_parent"
-            android:layout_height="wrap_content"
-            android:layout_marginTop="8dp"
-            android:text="@string/name"
-            android:textColor="#050505"
-            android:textSize="20sp"
-            android:textStyle="bold" />
 
-        <EditText
-            android:id="@+id/editTextTextEmailAddress3"
-            android:layout_width="match_parent"
-            android:layout_height="50dp"
-            android:background="@drawable/edittext_background"
-            android:ems="10"
-            android:hint="@string/enter_name"
-            android:inputType="text"
-            android:padding="12dp"
-            android:textColor="#707070"
-            android:textSize="18sp" />
+
+
 
         <TextView
             android:id="@+id/textView5"
