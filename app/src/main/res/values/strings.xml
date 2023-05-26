@@ -4,6 +4,7 @@
     <string name="password">Password</string>
     <string name="confirm_password">Confirm Password</string>
     <string name="don_t_have_account_sign_up">Don\'t have account? Sign Up</string>
+    <string name="Already_have_account_sign_in">Already have account? Login</string>
     <string name="login">Login</string>
     <string name="username">Username</string>
     <string name="my_profile">Profile</string>
@@ -18,7 +19,7 @@
     <string name="home">Home</string>
     <string name="product_name">Product name</string>
     <string name="feedback">Feedback</string>
-    <string name="Welcome_to_sellot">Welcome to SellIt!</string>
+    <string name="Welcome_to_sellit">Welcome to SellIt!</string>
     <string name="intro">A platform for students to buy and sell old goods to other students within their college.</string>
     <string name="our_team">Our Team</string>
     <string name="c">"Name    :    Hasnain Sajid \nSap ID       :    27199"</string>
@@ -41,4 +42,5 @@
     <string name="enter_name">Enter Name</string>
     <!-- TODO: Remove or change this placeholder text -->
     <string name="hello_blank_fragment">Hello blank fragment</string>
+    <string name="todo">TODO</string>
 </resources>

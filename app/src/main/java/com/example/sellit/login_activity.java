@@ -1,14 +1,13 @@
 package com.example.sellit;
 
-import androidx.appcompat.app.AppCompatActivity;
-
 import android.content.Intent;
 import android.os.Bundle;
 import android.text.TextUtils;
-import android.view.View;
 import android.widget.Button;
 import android.widget.EditText;
 import android.widget.Toast;
+
+import androidx.appcompat.app.AppCompatActivity;
 
 import com.google.firebase.auth.FirebaseAuth;
 
@@ -26,25 +25,13 @@ public class login_activity extends AppCompatActivity {
         passwordTextView = findViewById(R.id.editTextTextPassword);
         login = findViewById(R.id.loginbtn);
         login.setOnClickListener(view -> loginUserAccount());
-//        login.setOnClickListener(
-//                new View.OnClickListener() {
-//                    @Override
-//                    public void onClick(View v) {
-//                        Intent i = new Intent(login_activity.this,drawer_activity.class);
-//                        startActivity(i);
-//                    }
-//                }
-//        );
 
 
         register = findViewById(R.id.registerbtn);
         register.setOnClickListener(
-                new View.OnClickListener() {
-                    @Override
-                    public void onClick(View v) {
-                        Intent i = new Intent(login_activity.this,signup_activity.class);
-                        startActivity(i);
-                    }
+                v -> {
+                    Intent i = new Intent(login_activity.this,signup_activity.class);
+                    startActivity(i);
                 }
         );
     }

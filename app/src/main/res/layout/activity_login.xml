@@ -17,7 +17,9 @@
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toTopOf="parent"
         app:layout_constraintVertical_bias="0.0"
-        app:srcCompat="@drawable/top_background" />
+        app:srcCompat="@drawable/top_background"
+        android:contentDescription="@string/todo"
+        tools:ignore="ContentDescription" />
 
     <TextView
         android:id="@+id/textView"
@@ -66,7 +68,8 @@
             android:inputType="textEmailAddress"
             android:padding="12dp"
             android:textColor="#707070"
-            android:textSize="18sp" />
+            android:textSize="18sp"
+            android:autofillHints="" />
 
         <TextView
             android:id="@+id/textView3"
@@ -89,7 +92,8 @@
             android:inputType="textPassword"
             android:padding="12dp"
             android:textColor="#707070"
-            android:textSize="18sp" />
+            android:textSize="18sp"
+            android:autofillHints="" />
 
         <Button
             android:id="@+id/loginbtn"
