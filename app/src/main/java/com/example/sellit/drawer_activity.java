@@ -56,6 +56,12 @@ public class drawer_activity extends AppCompatActivity implements NavigationView
 
         startActivity(new Intent(this, login_activity.class));
         }
+        else if (menu_id == R.id.nav_about) {
+            getSupportFragmentManager().beginTransaction().replace(R.id.frag_container, new AboutFragment()).commit();
+        }
+        else if (menu_id == R.id.nav_feedback) {
+            getSupportFragmentManager().beginTransaction().replace(R.id.frag_container, new FeedbackFragment()).commit();
+        }
         drawer.closeDrawer(GravityCompat.START);
         return true;
     }
