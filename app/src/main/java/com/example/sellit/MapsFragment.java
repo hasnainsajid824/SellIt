@@ -16,35 +16,37 @@ import com.google.android.gms.maps.SupportMapFragment;
 import com.google.android.gms.maps.model.LatLng;
 import com.google.android.gms.maps.model.MarkerOptions;
 
-public class MapsFragment extends Fragment {
-
+public class MapsFragment extends Fragment implements OnMapReadyCallback{
+    private GoogleMap mMap;
     @Override
     public View onCreateView(LayoutInflater inflater, ViewGroup container,
                              Bundle savedInstanceState) {
         // Initialize view
-        View view=inflater.inflate(R.layout.fragment_maps, container, false);
+        View view = inflater.inflate(R.layout.fragment_maps, container, false);
 
         // Initialize map fragment
-        SupportMapFragment supportMapFragment=(SupportMapFragment)
+        SupportMapFragment supportMapFragment = (SupportMapFragment)
                 getChildFragmentManager().findFragmentById(R.id.google_map);
 
         // Async map
-        supportMapFragment.getMapAsync(new OnMapReadyCallback() {
+        supportMapFragment.getMapAsync((OnMapReadyCallback) this);
+        return view;
+    }
             @Override
             public void onMapReady(GoogleMap googleMap) {
                 // When map is loaded
-                googleMap.setOnMapClickListener(new GoogleMap.OnMapClickListener() {
-                    @Override
-                    public void onMapClick(LatLng latLng) {
 
-                        LatLng Riphah = new LatLng(31.377283, 74.230757);
-                        googleMap.addMarker(new MarkerOptions().position(Riphah).title("Riphah International University"));
-                        googleMap.moveCamera(CameraUpdateFactory.newLatLngZoom(Riphah, 15f));
-                    }
-                });
+                mMap = googleMap;
+
+                // Add a marker in Riphah and move the camera
+                LatLng Riphah = new LatLng(31.377283, 74.230757);
+                mMap.addMarker(new MarkerOptions()
+                        .position(Riphah)
+                        .title("Riphah International University"));
+                mMap.moveCamera(
+                        CameraUpdateFactory.newLatLng(Riphah));
+                mMap.animateCamera(CameraUpdateFactory.zoomTo(15));
             }
-        });
-        // Return view
-        return view;
+
     }
-}
+

@@ -118,7 +118,7 @@ public class BuyFragment extends Fragment {
             String desc = bundle.getString("desc");
             sEmail = bundle.getString("email");
             name.setText(pName);
-            price.setText("₹ " + pPrice);
+            price.setText("$ " + pPrice);
             seller.setText(sName);
             sellDate.setText(date);
             if (desc != null) {
@@ -281,8 +281,8 @@ public class BuyFragment extends Fragment {
 
     private void sendEmailToBuyer() {
         String email = bEmail;
-        String subject = "[Juggler] Request Successful for " + pName;
-        String thankMsg = "\n\nThank you for using Juggler :)";
+        String subject = "SellIt Request Successful for " + pName;
+        String thankMsg = "\n\nThank you for using SellIt :)";
         String autoMsg = "\n\nThis is an auto generated email. Please do not reply to this email.";
 
         String message = "Hello " + bName + ". You have requested " + sName  +" for \"" + pName + "\". You can send message to " + sName + " in the app by clicking on message button." + thankMsg + autoMsg ;

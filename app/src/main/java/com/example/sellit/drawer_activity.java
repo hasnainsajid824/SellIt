@@ -12,6 +12,7 @@ import android.os.Bundle;
 import android.view.MenuItem;
 
 import com.google.android.material.navigation.NavigationView;
+import com.google.firebase.auth.FirebaseAuth;
 
 public class drawer_activity extends AppCompatActivity implements NavigationView.OnNavigationItemSelectedListener {
     private androidx.drawerlayout.widget.DrawerLayout drawer;
@@ -20,10 +21,10 @@ public class drawer_activity extends AppCompatActivity implements NavigationView
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
+        getSupportActionBar().hide();
         setContentView(R.layout.activity_drawer);
 
         androidx.appcompat.widget.Toolbar toolbar = (androidx.appcompat.widget.Toolbar) findViewById(R.id.toolbar);
-        setSupportActionBar(toolbar);
 
         drawer = (androidx.drawerlayout.widget.DrawerLayout) findViewById(R.id.drawer_layout);
 
@@ -53,8 +54,9 @@ public class drawer_activity extends AppCompatActivity implements NavigationView
         getSupportFragmentManager().beginTransaction().replace(R.id.frag_container, new sell_fragment()).commit();
         }
         else if (menu_id == R.id.nav_logout) {
-
-        startActivity(new Intent(this, login_activity.class));
+            FirebaseAuth.getInstance().signOut();
+            finish();
+            startActivity(new Intent(this, login_activity.class));
         }
         else if (menu_id == R.id.nav_about) {
             getSupportFragmentManager().beginTransaction().replace(R.id.frag_container, new AboutFragment()).commit();

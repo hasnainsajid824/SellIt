@@ -3,6 +3,9 @@
     xmlns:tools="http://schemas.android.com/tools" >
 
     <uses-permission android:name="android.permission.INTERNET" />
+    <uses-permission android:name="android.permission.ACCESS_FINE_LOCATION"/>
+    <uses-permission android:name="android.permission.ACCESS_COARSE_LOCATION" />
+
 
     <application
         android:allowBackup="true"
@@ -27,7 +30,7 @@
         -->
         <meta-data
             android:name="com.google.android.geo.API_KEY"
-            android:value="AIzaSyCkMIeYTj9qP--5Eg0Yufw1gybNgkU6Kiw" />
+            android:value="AIzaSyCV_IO1lkHcZ1NZeKvuSAUMOEu_PtqzHys" />
 
         <activity
             android:name=".drawer_activity"

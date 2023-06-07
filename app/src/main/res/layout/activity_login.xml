@@ -4,13 +4,14 @@
     xmlns:tools="http://schemas.android.com/tools"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
-    android:backgroundTint="#00FFFFFF"
+    android:backgroundTint="#FFFFFF"
     tools:context=".login_activity">
 
     <ImageView
         android:id="@+id/imageView1"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
+        android:contentDescription="@string/todo"
         app:layout_constraintBottom_toBottomOf="parent"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintHorizontal_bias="0.0"
@@ -18,7 +19,6 @@
         app:layout_constraintTop_toTopOf="parent"
         app:layout_constraintVertical_bias="0.0"
         app:srcCompat="@drawable/top_background"
-        android:contentDescription="@string/todo"
         tools:ignore="ContentDescription" />
 
     <TextView
@@ -37,16 +37,21 @@
         app:layout_constraintVertical_bias="0.059" />
 
     <LinearLayout
-        android:id="@+id/linearLayout"
+        android:id="@+id/linearLayout11"
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
+        android:layout_margin="15dp"
+        android:background="@drawable/shadow"
+        android:backgroundTint="#00FFFFFF"
         android:orientation="vertical"
         android:padding="32dp"
-        android:backgroundTint="#00FFFFFF"
         app:layout_constraintBottom_toBottomOf="parent"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintHorizontal_bias="0.551"
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toBottomOf="@+id/imageView1"
         app:layout_constraintVertical_bias="0.0">
+
 
         <TextView
             android:id="@+id/textView2"
@@ -59,18 +64,18 @@
             android:textStyle="bold" />
 
         <EditText
-            android:id="@+id/editTextTextEmailAddress"
+            android:id="@+id/log_Email"
             android:layout_width="match_parent"
             android:layout_height="50dp"
             android:layout_marginTop="12dp"
+            android:autofillHints=""
             android:background="@drawable/edittext_background"
             android:ems="10"
             android:hint="@string/prompt_email"
             android:inputType="textEmailAddress"
             android:padding="12dp"
             android:textColor="#707070"
-            android:textSize="18sp"
-            android:autofillHints="" />
+            android:textSize="18sp" />
 
         <TextView
             android:id="@+id/textView3"
@@ -82,19 +87,19 @@
             android:textSize="20sp"
             android:textStyle="bold" />
 
-        <EditText
-            android:id="@+id/editTextTextPassword"
+        <com.google.android.material.textfield.TextInputEditText
+            android:id="@+id/log_password"
             android:layout_width="match_parent"
             android:layout_height="50dp"
             android:layout_marginTop="12dp"
+            android:autofillHints=""
             android:background="@drawable/edittext_background"
             android:ems="10"
             android:hint="@string/prompt_password"
             android:inputType="textPassword"
             android:padding="12dp"
             android:textColor="#707070"
-            android:textSize="18sp"
-            android:autofillHints="" />
+            android:textSize="18sp" />
 
         <Button
             android:id="@+id/loginbtn"
@@ -122,7 +127,6 @@
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintHorizontal_bias="0.494"
         app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toBottomOf="@+id/linearLayout"
         app:layout_constraintVertical_bias="0.409" />
 
 </androidx.constraintlayout.widget.ConstraintLayout>

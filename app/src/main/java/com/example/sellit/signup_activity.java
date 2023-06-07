@@ -1,108 +1,159 @@
 package com.example.sellit;
 
-import android.annotation.SuppressLint;
 import android.content.Intent;
 import android.os.Bundle;
-import android.text.TextUtils;
-import android.widget.Button;
+import android.util.Patterns;
+import android.view.View;
+import android.view.Window;
+import android.view.WindowManager;
 import android.widget.EditText;
 import android.widget.Toast;
 
+import androidx.annotation.NonNull;
 import androidx.appcompat.app.AppCompatActivity;
 
+import com.google.android.gms.tasks.OnCompleteListener;
+import com.google.android.gms.tasks.Task;
+import com.google.android.material.textfield.TextInputEditText;
+import com.google.firebase.auth.AuthResult;
 import com.google.firebase.auth.FirebaseAuth;
+import com.google.firebase.auth.FirebaseAuthUserCollisionException;
+import com.google.firebase.auth.FirebaseUser;
 
-public class signup_activity extends AppCompatActivity {
-    Button login;
-    private EditText emailTextView, passwordTextView,password20;
+public class signup_activity extends AppCompatActivity implements View.OnClickListener{
+
+    EditText editTextEmail;
+    TextInputEditText editTextPassword;
+
+    TextInputEditText confirmTextPassword;
     private FirebaseAuth mAuth;
-    @SuppressLint("MissingInflatedId")
+
+
+
+
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
+        getSupportActionBar().hide();
         setContentView(R.layout.activity_signup);
 
+        editTextEmail = (EditText) findViewById(R.id.editTextTextEmailAddress2);
+        editTextPassword= (TextInputEditText) findViewById((R.id.signupassowrd));
+        confirmTextPassword = (TextInputEditText) findViewById((R.id.editTextTextPassword));
 
-        // taking FirebaseAuth instance
         mAuth = FirebaseAuth.getInstance();
 
-        // initialising all views through id defined above
-        emailTextView = findViewById(R.id.editTextTextEmailAddress2);
-        passwordTextView = findViewById(R.id.signupassowrd);
-        password20=findViewById(R.id.editTextTextPassword);
-        Button btn = findViewById(R.id.signupbtn);
 
+        findViewById(R.id.signupbtn).setOnClickListener(this);
+        findViewById(R.id.backlogbtn).setOnClickListener(this);
+    }
 
-        // Set on Click Listener on Registration button
-        btn.setOnClickListener(v -> registerNewUser());
-        login = findViewById(R.id.logbtn);
-        login.setOnClickListener(
-                v -> {
-                    Intent i = new Intent(signup_activity.this,login_activity.class);
-                    startActivity(i);
+    private void registerUser(){
+        String email = editTextEmail.getText().toString().trim();
+        String password = editTextPassword.getText().toString().trim();
+        if(email.isEmpty()){
+            editTextEmail.setError("Email is required");
+            editTextEmail.requestFocus();
+            return;
+        }
+
+        if(!Patterns.EMAIL_ADDRESS.matcher(email).matches()){
+            editTextEmail.setError("Please enter a valid email");
+            editTextEmail.requestFocus();
+            return;
+        }
+
+        if(password.isEmpty()){
+            editTextPassword.setError("Password is required");
+            editTextPassword.requestFocus();
+            return;
+        }
+
+        if(password.length()<6 || password.length()>15){
+            editTextPassword.setError("Password should be of 6-15 characters");
+            editTextPassword.requestFocus();
+            return;
+        }
+
+        String upperCaseChars = "(.*[A-Z].*)";
+        if (!password.matches(upperCaseChars ))
+        {
+            //editTextPassword.setError("Password should contain atleast one upper case alphabet");
+            editTextPassword.setError("Password should contain at least one number, one lowercase letter, one uppercase letter, and one special character.");
+            editTextPassword.requestFocus();
+            return;
+        }
+
+        String lowerCaseChars = "(.*[a-z].*)";
+        if (!password.matches(lowerCaseChars ))
+        {
+            editTextPassword.setError("Password should contain at least one number, one lowercase letter, one uppercase letter, and one special character.");
+            editTextPassword.requestFocus();
+            return;
+        }
+
+        String numbers = "(.*[0-9].*)";
+        if (!password.matches(numbers))
+        {
+            editTextPassword.setError("Password should contain at least one number, one lowercase letter, one uppercase letter, and one special character.");
+            editTextPassword.requestFocus();
+            return;
+        }
+
+        String specialChars = "(.*[,~,!,@,#,$,%,^,&,*,(,),-,_,=,+,[,{,],},|,;,:,<,>,/,?].*$)";
+        if (!password.matches(specialChars ))
+        {
+            editTextPassword.setError("Password should contain at least one number, one lowercase letter, one uppercase letter, and one special character.");
+            editTextPassword.requestFocus();
+            return;
+        }
+
+        if (editTextPassword == confirmTextPassword)
+        {
+            editTextPassword.setError("Password does not Match. Please Enter Correct password.");
+            editTextPassword.requestFocus();
+            return;
+        }
+        mAuth.createUserWithEmailAndPassword(email,password).addOnCompleteListener(new OnCompleteListener<AuthResult>() {
+            @Override
+            public void onComplete(@NonNull Task<AuthResult> task) {
+                if(task.isSuccessful()){
+                     Toast.makeText(getApplicationContext(),"User Registered Successfully",Toast.LENGTH_SHORT).show();
+                     Intent intent=new Intent(signup_activity.this,drawer_activity.class);
+                     intent.addFlags(intent.FLAG_ACTIVITY_CLEAR_TOP);
+                     startActivity(intent);
+                     finish();
                 }
-        );
-    }
-
-    private void registerNewUser()
-    {
-
-        // Take the value of two edit texts in Strings
-        String email, password,password2;
-        email = emailTextView.getText().toString();
-        password = passwordTextView.getText().toString();
-        password2=password20.getText().toString();
-
-        // Validations for input email and password
-        if (TextUtils.isEmpty(email)) {
-            Toast.makeText(getApplicationContext(),
-                            "Please enter email!!",
-                            Toast.LENGTH_LONG)
-                    .show();
-            return;
-        }
-        if (TextUtils.isEmpty(password)) {
-            Toast.makeText(getApplicationContext(),
-                            "Please enter password!!",
-                            Toast.LENGTH_LONG)
-                    .show();
-            return;
-        }
-        if (!TextUtils.equals(password,password2)) {
-            Toast.makeText(getApplicationContext(),
-                            "Password Did not Match!!",
-                            Toast.LENGTH_LONG)
-                    .show();
-            return;
-        }
-
-        // create new user or register new user
-        mAuth.createUserWithEmailAndPassword(email, password)
-                .addOnCompleteListener(task -> {
-                    if (task.isSuccessful()) {
-                        Toast.makeText(getApplicationContext(),
-                                        "Registration successful!",
-                                        Toast.LENGTH_LONG)
-                                .show();
-
-
-                        // if the user created intent to login activity
-                        Intent intent
-                                = new Intent(signup_activity.this,
-                                login_activity.class);
-                        startActivity(intent);
+                else{
+                    if(task.getException() instanceof FirebaseAuthUserCollisionException){
+                        editTextPassword.setText("");
+                        Toast.makeText(getApplicationContext(),"You are already registered",Toast.LENGTH_SHORT).show();
                     }
-                    else {
-
-                        // Registration failed
-                        Toast.makeText(
-                                        getApplicationContext(),
-                                        "Registration failed!!"
-                                                + " Please try again later",
-                                        Toast.LENGTH_LONG)
-                                .show();
-
+                    else{
+                        editTextPassword.setText("");
+                        Toast.makeText(signup_activity.this,task.getException().getMessage(),Toast.LENGTH_SHORT).show();
                     }
-                });
+                }
+            }
+        });
     }
+
+
+    @Override
+    public void onClick(View view) {
+        switch(view.getId()) {
+
+            case R.id.signupbtn:
+                registerUser();
+                break;
+
+            case R.id.backlogbtn:
+                Intent intentLogin = new Intent(this, login_activity.class);
+                intentLogin.addFlags(intentLogin.FLAG_ACTIVITY_CLEAR_TOP);
+                startActivity(intentLogin);
+                finish();
+
+                break;
+        }
     }
+}

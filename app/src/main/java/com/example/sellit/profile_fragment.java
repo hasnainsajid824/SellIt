@@ -53,7 +53,6 @@ public class profile_fragment extends Fragment {
         editText = (EditText) v.findViewById(R.id.editTextDisplayName);
         imageView = (ImageView) v.findViewById(R.id.imageView);
         progressBar = v.findViewById(R.id.progressbar);
-        textView = v.findViewById(R.id.textViewVerified);
         textViewEmail = v.findViewById(R.id.text_view_email);
         textViewEmail.setText(mAuth.getCurrentUser().getEmail());
 
@@ -118,25 +117,6 @@ public class profile_fragment extends Fragment {
                 String displayName = user.getDisplayName();
                 editText.setText(displayName);
             }
-
-            if (user.isEmailVerified()) {
-                textView.setText("Verified");
-            } else {
-                textView.setText("Email Not Verified(click here to verify)");
-
-                textView.setOnClickListener(new View.OnClickListener() {
-                    @Override
-                    public void onClick(View v) {
-                        textView.setTextColor(1);
-                        user.sendEmailVerification().addOnCompleteListener(new OnCompleteListener<Void>() {
-                            @Override
-                            public void onComplete(@NonNull Task<Void> task) {
-                                Toast.makeText(getActivity(), "Verification email sent", Toast.LENGTH_LONG).show();
-                            }
-                        });
-                    }
-                });
-            }
         }
     }
 
@@ -147,7 +127,8 @@ public class profile_fragment extends Fragment {
                 || networkConnection.isConnectedToMobileNetwork(getActivity())
                 || networkConnection.isConnectedToWifi(getActivity())) {
 
-        } else {
+        }
+        else {
             networkConnection.showNoInternetAvailableErrorDialog(getActivity());
             return;
         }
@@ -217,7 +198,7 @@ public class profile_fragment extends Fragment {
         if (requestCode == CHOOSE_IMAGE && resultCode == Activity.RESULT_OK && data != null && data.getData() != null) {
             uriProfileImage = data.getData();
             try {
-                Bitmap bitmap = MediaStore.Images.Media.getBitmap(getActivity().getContentResolver(), uriProfileImage);
+                Bitmap bitmap = MediaStore.Images.Media.getBitmap(requireActivity().getContentResolver(), uriProfileImage);
                 imageView.setImageBitmap(bitmap);
                 uploadImageToFirebaseStorage();
             } catch (IOException e) {

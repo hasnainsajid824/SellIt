@@ -174,7 +174,11 @@
         android:layout_alignParentBottom="true"
         android:duplicateParentState="true"
         android:paddingLeft="10dp"
-        android:text="Buy" />
+        android:paddingRight="10dp"
+        android:text="Buy"
+        android:textColor="#FFFFFF"
+        android:layout_margin="10dp"
+        android:backgroundTint="@color/colorPrimary"/>
 
     <Button
         android:id="@+id/delete_button"
@@ -186,7 +190,9 @@
         android:paddingLeft="10dp"
         android:paddingRight="10dp"
         android:text="Delete"
-        android:visibility="gone"/>
+        android:textColor="#FFFFFF"
+        android:visibility="gone"
+        android:backgroundTint="@color/colorPrimary"/>
 
     <Button
         android:id="@+id/msg_button"
@@ -195,8 +201,11 @@
         android:layout_alignParentBottom="true"
         android:layout_toEndOf="@+id/offer_button"
         android:duplicateParentState="true"
-        android:paddingStart="5dp"
+        android:paddingLeft="10dp"
         android:paddingRight="10dp"
-        android:text="message" />
+        android:text="message"
+        android:layout_margin="10dp"
+        android:textColor="#FFFFFF"
+        android:backgroundTint="@color/colorPrimary"/>
 
 </RelativeLayout>

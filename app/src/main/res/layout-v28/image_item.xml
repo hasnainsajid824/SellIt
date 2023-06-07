@@ -6,8 +6,7 @@
     android:layout_margin="8dp"
     android:backgroundTint="@color/colorPrimary"
     app:cardCornerRadius="10dp"
-    android:outlineAmbientShadowColor="#ffd60a"
-    android:background="@drawable/shadow">
+    android:outlineAmbientShadowColor="#ffd60a">
 
     <LinearLayout
         android:layout_width="match_parent"

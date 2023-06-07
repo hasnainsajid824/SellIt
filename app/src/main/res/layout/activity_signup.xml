@@ -4,13 +4,14 @@
     xmlns:tools="http://schemas.android.com/tools"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
-    android:backgroundTint="#00FFFFFF"
+    android:backgroundTint="#FFFFFF"
     tools:context=".signup_activity">
 
     <ImageView
         android:id="@+id/imageView1"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
+        android:contentDescription="@string/todo"
         app:layout_constraintBottom_toBottomOf="parent"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintHorizontal_bias="0.0"
@@ -18,7 +19,6 @@
         app:layout_constraintTop_toTopOf="parent"
         app:layout_constraintVertical_bias="0.0"
         app:srcCompat="@drawable/top_background"
-        android:contentDescription="@string/todo"
         tools:ignore="ContentDescription" />
 
     <TextView
@@ -39,17 +39,16 @@
     <LinearLayout
         android:id="@+id/linearLayout"
         android:layout_width="match_parent"
-        android:layout_height="516dp"
+        android:layout_height="wrap_content"
+        android:layout_margin="10dp"
+        android:backgroundTint="#00FFFFFF"
         android:orientation="vertical"
         android:padding="32dp"
-        android:backgroundTint="#00FFFFFF"
         app:layout_constraintBottom_toBottomOf="parent"
+        app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toBottomOf="@+id/imageView1"
         app:layout_constraintVertical_bias="0.0">
-
-
-
 
 
         <TextView
@@ -66,14 +65,14 @@
             android:id="@+id/editTextTextEmailAddress2"
             android:layout_width="match_parent"
             android:layout_height="50dp"
+            android:autofillHints=""
             android:background="@drawable/edittext_background"
             android:ems="10"
             android:hint="@string/prompt_email"
             android:inputType="textEmailAddress"
             android:padding="12dp"
             android:textColor="#707070"
-            android:textSize="18sp"
-            android:autofillHints="" />
+            android:textSize="18sp" />
 
         <TextView
             android:id="@+id/textView2"
@@ -85,21 +84,20 @@
             android:textSize="20sp"
             android:textStyle="bold" />
 
-        <EditText
+        <com.google.android.material.textfield.TextInputEditText
             android:id="@+id/signupassowrd"
             android:layout_width="match_parent"
             android:layout_height="50dp"
+            android:autofillHints=""
             android:background="@drawable/edittext_background"
             android:ems="10"
             android:hint="@string/prompt_password"
             android:inputType="textPassword"
             android:padding="12dp"
             android:textColor="#707070"
-            android:textSize="18sp"
-            android:autofillHints="" />
+            android:textSize="18sp" />
 
         <TextView
-            android:id="@+id/textView3"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
             android:layout_marginTop="12dp"
@@ -108,18 +106,18 @@
             android:textSize="20sp"
             android:textStyle="bold" />
 
-        <EditText
+        <com.google.android.material.textfield.TextInputEditText
             android:id="@+id/editTextTextPassword"
             android:layout_width="match_parent"
             android:layout_height="48dp"
+            android:autofillHints=""
             android:background="@drawable/edittext_background"
             android:ems="10"
             android:hint="@string/confirm_password"
             android:inputType="textPassword"
             android:padding="10dp"
             android:textColor="#707070"
-            android:textSize="17sp"
-            android:autofillHints="" />
+            android:textSize="17sp" />
 
 
         <Button
@@ -133,22 +131,22 @@
             android:textSize="25sp"
             android:textStyle="bold" />
 
-        <Button
-            android:id="@+id/logbtn"
-            android:layout_width="wrap_content"
-            android:layout_height="wrap_content"
-            android:backgroundTint="#00FFFFFF"
-            android:text="@string/Already_have_account_sign_in"
-            android:textColor="#358856"
-            android:textSize="20sp"
-            android:textStyle="bold"
-            android:layout_margin="20dp"
-            app:layout_constraintBottom_toBottomOf="parent"
-            app:layout_constraintEnd_toEndOf="parent"
-            app:layout_constraintHorizontal_bias="0.494"
-            app:layout_constraintStart_toStartOf="parent"
-            app:layout_constraintTop_toBottomOf="@+id/linearLayout"
-            app:layout_constraintVertical_bias="0.409" />
-    </LinearLayout>
 
+    </LinearLayout>
+    <Button
+        android:id="@+id/backlogbtn"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_margin="20dp"
+        android:backgroundTint="#00FFFFFF"
+        android:text="@string/Already_have_account_sign_in"
+        android:textColor="#358856"
+        android:textSize="18sp"
+        android:textStyle="bold"
+        app:layout_constraintBottom_toBottomOf="parent"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintHorizontal_bias="0.494"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toBottomOf="@+id/linearLayout"
+        app:layout_constraintVertical_bias="0.409" />
 </androidx.constraintlayout.widget.ConstraintLayout>
