@@ -36,8 +36,6 @@ public class Upload {
         Date date = new Date();
         mDate = df.format(date);
 
-
-
     }
 
     public String getName() {

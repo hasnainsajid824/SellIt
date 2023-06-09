@@ -191,7 +191,6 @@ public class BuyFragment extends Fragment {
                 });
 
 
-
                 AlertDialog ad = builder.create();
                 ad.show();
 

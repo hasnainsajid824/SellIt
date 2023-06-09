@@ -32,7 +32,6 @@ public class login_activity extends AppCompatActivity implements View.OnClickLis
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
-        getSupportActionBar().hide();
         setContentView(R.layout.activity_login);
 
         editTextEmail = (EditText) findViewById(R.id.log_Email);
@@ -144,7 +143,6 @@ public class login_activity extends AppCompatActivity implements View.OnClickLis
             startActivity(new Intent(login_activity.this,drawer_activity.class));
             finish();
         }
-        getSupportActionBar().hide();
     }
 
     @Override
