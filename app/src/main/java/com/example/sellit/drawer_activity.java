@@ -10,13 +10,13 @@ import androidx.drawerlayout.widget.DrawerLayout;
 import android.content.Intent;
 import android.os.Bundle;
 import android.view.MenuItem;
+import android.widget.TextView;
 
 import com.google.android.material.navigation.NavigationView;
 import com.google.firebase.auth.FirebaseAuth;
 
 public class drawer_activity extends AppCompatActivity implements NavigationView.OnNavigationItemSelectedListener {
     private androidx.drawerlayout.widget.DrawerLayout drawer;
-//    private static int SPLASH_TIME_OUT = 4000;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -25,6 +25,7 @@ public class drawer_activity extends AppCompatActivity implements NavigationView
 
         androidx.appcompat.widget.Toolbar toolbar = (androidx.appcompat.widget.Toolbar) findViewById(R.id.toolbar);
 
+        setSupportActionBar(toolbar);
         drawer = (androidx.drawerlayout.widget.DrawerLayout) findViewById(R.id.drawer_layout);
 
         com.google.android.material.navigation.NavigationView navigationView = (com.google.android.material.navigation.NavigationView)

@@ -45,6 +45,7 @@ public class ImageAdapter extends RecyclerView.Adapter<ImageAdapter.ImageViewHol
         Upload uploadCurrent = mUploads.get(position);
         holder.textViewName.setText(uploadCurrent.getName());
         holder.textViewPrice.setText("$ " + uploadCurrent.getPrice());
+        holder.textViewDate.setText("Posted On:  "+ uploadCurrent.getDate());
         Picasso.get()
                 .load(uploadCurrent.getImageUrl())
                 .placeholder(R.mipmap.ic_loading)
@@ -61,6 +62,7 @@ public class ImageAdapter extends RecyclerView.Adapter<ImageAdapter.ImageViewHol
     public class ImageViewHolder extends RecyclerView.ViewHolder {
         public TextView textViewName;
         public TextView textViewPrice;
+        public  TextView textViewDate;
         public ImageView imageView;
 
         public ImageViewHolder(View itemView) {
@@ -68,6 +70,7 @@ public class ImageAdapter extends RecyclerView.Adapter<ImageAdapter.ImageViewHol
 
             textViewName = itemView.findViewById(R.id.text_view_name);
             textViewPrice = itemView.findViewById(R.id.text_view_price);
+            textViewDate = itemView.findViewById(R.id.text_view_date);
             imageView = itemView.findViewById(R.id.image_view_upload);
 
             imageView.setOnClickListener(new View.OnClickListener() {
@@ -92,10 +95,6 @@ public class ImageAdapter extends RecyclerView.Adapter<ImageAdapter.ImageViewHol
                     bundle.putString("desc", current.getDesc());
                     bundle.putString("email", current.getEmail());
                     bundle.putString("key", current.getKey());
-                    /*if (((BitmapDrawable) imageView.getDrawable()).getBitmap() != null)
-                        bundle.putParcelable("bitmapImage", ((BitmapDrawable) imageView.getDrawable()).getBitmap());
-                    else
-                        bundle.putParcelable("bitmapImage", null);*/
                     buyFragment.setArguments(bundle);
 
 

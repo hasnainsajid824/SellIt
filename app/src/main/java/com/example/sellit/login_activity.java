@@ -40,6 +40,7 @@ public class login_activity extends AppCompatActivity implements View.OnClickLis
         mAuth=FirebaseAuth.getInstance();
 
         findViewById(R.id.loginbtn).setOnClickListener(this);
+
         register = findViewById(R.id.registerbtn);
         register.setOnClickListener(
                 new View.OnClickListener() {
@@ -76,6 +77,7 @@ public class login_activity extends AppCompatActivity implements View.OnClickLis
             editTextPassword.requestFocus();
             return;
         }
+
 //
 //        if(password.length()<6 || password.length()>15){
 //            editTextPassword.setError("Password should be of 6-15 characters");
@@ -115,7 +117,7 @@ public class login_activity extends AppCompatActivity implements View.OnClickLis
 //            return;
 //        }
 
-        mAuth.signInWithEmailAndPassword(email,password).addOnCompleteListener(new OnCompleteListener<AuthResult>() {
+        mAuth.signInWithEmailAndPassword(email,password).addOnCompleteListener(new OnCompleteListener<AuthResult>(){
             @Override
             public void onComplete(@NonNull Task<AuthResult> task) {
 

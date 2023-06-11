@@ -42,7 +42,6 @@ public class profile_fragment extends Fragment {
     ProgressBar progressBar;
     String profileimageUrl;
     FirebaseAuth mAuth;
-    //private DatabaseReference mDatabaseRef;
 
     @Override
     public View onCreateView(@NonNull LayoutInflater inflater, @Nullable ViewGroup container, @Nullable Bundle savedInstanceState) {
@@ -64,6 +63,7 @@ public class profile_fragment extends Fragment {
                 showImageChooser();
             }
         });
+
         loadUserInformation();
 
         v.findViewById(R.id.buttonSave).setOnClickListener(new View.OnClickListener() {
@@ -84,12 +84,6 @@ public class profile_fragment extends Fragment {
             Toast.makeText(getActivity(), "Complete your profile first", Toast.LENGTH_SHORT).show();
             return;
         }
-
-            /*if (mAuth.getCurrentUser() == null) {
-                getActivity().finish();
-                startActivity(new Intent(getActivity(), LoginActivity.class));
-            }*/
-
     }
 
     private void loadUserInformation() {
@@ -148,24 +142,6 @@ public class profile_fragment extends Fragment {
         }
 
 
-
-        /*FirebaseInstanceId.getInstance().getInstanceId()
-                .addOnCompleteListener(new OnCompleteListener<InstanceIdResult>() {
-                    @Override
-                    public void onComplete(@NonNull Task<InstanceIdResult> task) {
-                        if (task.isSuccessful()) {
-                            String token = task.getResult().getToken();
-                            User currentUser = new User(token.trim());
-                            String uId = mAuth.getCurrentUser().getUid();
-                            mDatabaseRef.child(uId).setValue(currentUser);
-                        } else {
-                            Toast.makeText(getActivity(), task.getException().getMessage(), Toast.LENGTH_SHORT).show();
-
-                        }
-                    }
-                });*/
-
-
         if (user != null && profileimageUrl != null) {
             UserProfileChangeRequest profile = new UserProfileChangeRequest.Builder()
                     .setDisplayName(displayName)
@@ -178,6 +154,7 @@ public class profile_fragment extends Fragment {
                         public void onComplete(@NonNull Task<Void> task) {
                             if (task.isSuccessful()) {
                                 Toast.makeText(getActivity(), "Profile updated successfully", Toast.LENGTH_LONG).show();
+                                getActivity().getSupportFragmentManager().beginTransaction().replace(R.id.frag_container, new home_fragement()).commit();
                             } else {
                                 Toast.makeText(getActivity(), task.getException().getMessage(), Toast.LENGTH_LONG).show();
                                 return;

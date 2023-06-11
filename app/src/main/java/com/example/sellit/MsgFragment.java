@@ -69,6 +69,7 @@ public class MsgFragment extends Fragment implements View.OnClickListener {
             @Override
             public void onClick(DialogInterface dialog, int which) {
                 sendEmail();
+                getActivity().getSupportFragmentManager().beginTransaction().replace(R.id.frag_container, new home_fragement()).commit();
                 editTextMessage.setText("");
             }
         });

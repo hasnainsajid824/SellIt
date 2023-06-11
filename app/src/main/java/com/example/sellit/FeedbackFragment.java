@@ -37,7 +37,7 @@ public class FeedbackFragment extends Fragment implements View.OnClickListener {
     }
 
     private void sendEmail() {
-        String email = "juggler.buy.and.sell@gmail.com";
+        String email = "extrahussy22@gmail.com";
         String subject = "[Feedback] " + Name;
         String message = editTextMessage.getText().toString().trim() + "\n\nsent by " + Email;
         SendMail sm = new SendMail(getActivity(), email, subject, message);

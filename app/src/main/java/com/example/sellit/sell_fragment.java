@@ -85,11 +85,8 @@ public class sell_fragment extends Fragment {
                 } else {
                     uploadFile();
                 }
-
-
             }
         });
-
 
         return v;
     }

@@ -96,6 +96,7 @@ public class BuyFragment extends Fragment {
         pImage = (ImageView) v.findViewById(R.id.product_image);
         Desc_tag = (TextView) v.findViewById(R.id.Description_tag);
         Desc_text = (TextView) v.findViewById(R.id.Description);
+
         bName = mAuth.getInstance().getCurrentUser().getDisplayName();
         bEmail = mAuth.getInstance().getCurrentUser().getEmail();
 
@@ -111,7 +112,7 @@ public class BuyFragment extends Fragment {
             pName = bundle.getString("name");
             String pImageUrl = bundle.getString("imageUrl");
             String pPrice = bundle.getString("price");
-            //Bitmap bitmapImage = bundle.getParcelable("bitmapImage");
+
             sName = bundle.getString("userName");
             key = bundle.getString("key");
             String date = bundle.getString("date");
@@ -127,21 +128,12 @@ public class BuyFragment extends Fragment {
                 Desc_text.setText(desc);
             }
 
-            //pImage.setImageURI(Uri.parse(pImageUrl));
-//            if (bitmapImage != null)
-//                pImage.setImageBitmap(bitmapImage);
             if (pImageUrl != null) {
                 String photoUrl = pImageUrl;
                 Glide.with(this)
                         .load(photoUrl)
                         .into(pImage);
             }
-
-
-            /*DatabaseReference ref = FirebaseDatabase.getInstance().getReference();
-            DatabaseReference current = ref.child("fir-auth-431b5").child("user").child("token");
-            //User currentUser = mUser.get(email);
-*/
 
         }
 
@@ -180,6 +172,7 @@ public class BuyFragment extends Fragment {
                     public void onClick(DialogInterface dialog, int which) {
                         sendEmailToSeller();
                         sendEmailToBuyer();
+                        getActivity().getSupportFragmentManager().beginTransaction().replace(R.id.frag_container, new home_fragement()).commit();
                     }
                 });
 
@@ -189,13 +182,8 @@ public class BuyFragment extends Fragment {
 
                     }
                 });
-
-
                 AlertDialog ad = builder.create();
                 ad.show();
-
-
-
             }
         });
 
@@ -258,6 +246,7 @@ public class BuyFragment extends Fragment {
                 startActivity(new Intent(getActivity(), drawer_activity.class));
                 mDatabaseRef.child(selectedKey).removeValue();
                 Toast.makeText(getActivity(), "Item deleted", Toast.LENGTH_SHORT).show();
+                getActivity().getSupportFragmentManager().beginTransaction().replace(R.id.frag_container, new home_fragement()).commit();
                 getActivity().finish();
             }
         });
@@ -265,12 +254,12 @@ public class BuyFragment extends Fragment {
 
     private void sendEmailToSeller() {
         String email = sEmail;
-        String subject = "[Juggler] Request for product " + pName;
+        String subject = "[Sell It!] Request for product " + pName;
 
         String msg = "unknown-user";
         if (bName != "")
             msg = bName;
-        String thankMsg = "\n\nThank you for using Juggler :)";
+        String thankMsg = "\n\nThank you for using Sell It! :)";
         String autoMsg = "\n\nThis is an auto generated email. Please do not reply to this email.";
 
         String message = "Hey " + sName + ". " + msg + " is requesting for your product \"" + pName + "\". Wait for further response from " + msg + ". If you want you can write to " + msg + " on email id " + bEmail + " ." + thankMsg + autoMsg;
@@ -288,6 +277,4 @@ public class BuyFragment extends Fragment {
         SendMail sm2b = new SendMail(getActivity(), email, subject, message);
         sm2b.execute();
     }
-
-
 }
