@@ -76,44 +76,44 @@ public class login_activity extends AppCompatActivity implements View.OnClickLis
             editTextPassword.requestFocus();
             return;
         }
-
-        if(password.length()<6 || password.length()>15){
-            editTextPassword.setError("Password should be of 6-15 characters");
-            editTextPassword.requestFocus();
-            return;
-        }
-
-        String upperCaseChars = "(.*[A-Z].*)";
-        if (!password.matches(upperCaseChars ))
-        {
-            editTextPassword.setError("Password should contain at least one number, one lowercase letter, one uppercase letter, and one special character.");
-            editTextPassword.requestFocus();
-            return;
-        }
-
-        String lowerCaseChars = "(.*[a-z].*)";
-        if (!password.matches(lowerCaseChars ))
-        {
-            editTextPassword.setError("Password should contain at least one number, one lowercase letter, one uppercase letter, and one special character.");
-            editTextPassword.requestFocus();
-            return;
-        }
-
-        String numbers = "(.*[0-9].*)";
-        if (!password.matches(numbers))
-        {
-            editTextPassword.setError("Password should contain at least one number, one lowercase letter, one uppercase letter, and one special character.");
-            editTextPassword.requestFocus();
-            return;
-        }
-
-        String specialChars = "(.*[,~,!,@,#,$,%,^,&,*,(,),-,_,=,+,[,{,],},|,;,:,<,>,/,?].*$)";
-        if (!password.matches(specialChars ))
-        {
-            editTextPassword.setError("Password should contain at least one number, one lowercase letter, one uppercase letter, and one special character.");
-            editTextPassword.requestFocus();
-            return;
-        }
+//
+//        if(password.length()<6 || password.length()>15){
+//            editTextPassword.setError("Password should be of 6-15 characters");
+//            editTextPassword.requestFocus();
+//            return;
+//        }
+//
+//        String upperCaseChars = "(.*[A-Z].*)";
+//        if (!password.matches(upperCaseChars ))
+//        {
+//            editTextPassword.setError("Password should contain at least one number, one lowercase letter, one uppercase letter, and one special character.");
+//            editTextPassword.requestFocus();
+//            return;
+//        }
+//
+//        String lowerCaseChars = "(.*[a-z].*)";
+//        if (!password.matches(lowerCaseChars ))
+//        {
+//            editTextPassword.setError("Password should contain at least one number, one lowercase letter, one uppercase letter, and one special character.");
+//            editTextPassword.requestFocus();
+//            return;
+//        }
+//
+//        String numbers = "(.*[0-9].*)";
+//        if (!password.matches(numbers))
+//        {
+//            editTextPassword.setError("Password should contain at least one number, one lowercase letter, one uppercase letter, and one special character.");
+//            editTextPassword.requestFocus();
+//            return;
+//        }
+//
+//        String specialChars = "(.*[,~,!,@,#,$,%,^,&,*,(,),-,_,=,+,[,{,],},|,;,:,<,>,/,?].*$)";
+//        if (!password.matches(specialChars ))
+//        {
+//            editTextPassword.setError("Password should contain at least one number, one lowercase letter, one uppercase letter, and one special character.");
+//            editTextPassword.requestFocus();
+//            return;
+//        }
 
         mAuth.signInWithEmailAndPassword(email,password).addOnCompleteListener(new OnCompleteListener<AuthResult>() {
             @Override
