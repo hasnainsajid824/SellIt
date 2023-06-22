@@ -1,2 +1,2 @@
 # SellIt
-This android app which can be use to buy and sell products
+This is an android app which can be use to buy and sell products
